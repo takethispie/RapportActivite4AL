@@ -58,7 +58,7 @@ L'architecture du web2 était completement incorrecte, utilisant le C\# comme la
 comme langage objet, aucune des bonnes pratiques ne sont respecté ce qui rend le code hautement dupliqué 
 et difficile à maintenir, de plus aucun test unitaires n'etait mis en place rendant difficile la non-regressions.
 
-La première étape fut d'analyser ce qui appartenait purement à la partie métier et l'isoler des composants 
+La première étape fut d'analyser ce qui appartenait purement à la partie métier et d'isoler les composants 
 techniques relatif à l'application et à la persistance des données: \newline
 
 \begin{figure}[h]
@@ -68,38 +68,61 @@ techniques relatif à l'application et à la persistance des données: \newline
 	\label{fig:domainagenda}
 \end{figure}
 
+Cette partie ne concerne que les classes métier de l'agenda, chaque agenda est composé de jour 
+qui sont eux-mêmes composés de créneaux (slot) qui peuvent avoir plusieurs états, tout les 
+états ne peuvent pas être representé de la même manière car ils correspondent plutôt à 
+des sous état tel que le fait qu'un rdv pris soit un rdv web pris via le site web Doctolib 
+ou de l'un de nos autres partenaires. 
+J'ai du trouver et isoler les propriété et différent états des slot par moi pour avoir une 
+architecture correcte, non présente sur le web2.  \newline
+
+Avec ces classes réalisées je me suis penché sur l'implémentation du reste de l'architecture, 
+j'ai opté pour une architecture hexagonale, la partie métier serait un noyau central avec 
+lequel le reste de l'application interargirait, cela permettrait ainsi de 
+verifier les règles métier avec des test unitaires et d'isoler ces classes avec le reste 
+de l'application permettant par ailleurs de porter ce noyay rapidement dans 
+d'autres application futures.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Images/hexarch}
+    \caption{Architecture Hexagonale}
+    \label{fig:archhexa}
+\end{figure}
+
+Avec une architecture hexagonale, les classes métier communique vers l'exterieur via des "port" et 
+des "adapter", les ports sont en fait des interface qui definissent des rôles à remplir 
+et les adapter sont les implémentation de ces interfaces, les adapter "remplissent un contrat".
+
+
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\linewidth]{Images/otherpersistence}
-	\caption{reste des classes métier}
+	\includegraphics[width=1\linewidth]{Images/slotumlpart1}
+	\caption{ implémentation des repository }
 	\label{fig:otherrepo}
 \end{figure}
 
+Les Repository sont l'implémentation d'un interface d'entrée, ils permettent l'interaction de façon 
+abstraite avec un support de persistance tel qu'une base de données, le noyau métier ne connais pas 
+les dessous technique, cela facilite les test unitaires puisque l'on peu alors utiliser 
+des adapteurs qui retournent des données fixe pour les tests. Dans le cas du web3 la grande 
+partie des interface d'entrée vont être de l'accès aux données tandis que pour les interfaces
+de sortie cela peut être les controller d'ASP.net core ou les requêtes http envoyées 
+par l'application mobile. \newline
+\newpage
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\linewidth]{Images/hexarch}
-	\caption{Architecture Hexagonale}
-	\label{fig:archhexa}
+	\includegraphics[width=1\linewidth]{Images/otherpersistence}
+	\caption{reste des classes métier et repository}
+	\label{fig:otherrepo}
 \end{figure}
 
 
-\newpage
+j'ai ensuite entièrement séparé le noyau métier dans une librairie à part referencé dans 
+le projet principal pour plus de clareté et pour permettre l'evolution indépendante du site 
+et du noyau qui ont chacun leur depot git, le code client-side est dans le depo du site 
+mais j'ai pour objectif de rendre ce code commun entre l'application mobile et le site web.
 
 \section{Bilan et recul sur les missions}
-Sur le plan professionnel cette année a été très enrichissante, j'ai pu renforcer mes compétences dans 
-les framework Angular, Ionic et .NET que j'avais commencé à acquérir lors de mon année de licence 
-professionnelle, sur le projet de site web j'ai pu appliquer pleinement mes compétences 
-dans l'architecture des logiciels avec la mise en place de méthodes de développement et 
-de gestion de projet agile dans un premier temp puis avec l'application des bonnes pratiques 
-de développement pour les langages orientés object avec l'utilisation correcte de design pattern
-et le respect des règles de base pour la création de logiciels maintenable, performant et fiables.
-\newline
-
-D'un point de vu personnel j'ai appris beaucoup de choses sur la gestion d'agenda et les centres d'accueil téléphonique notamment
-en terme de contraintes techniques qui sont imposées par des clients réticent au changement 
-ainsi que les enjeux technologiques de ce cœur de métier qui doit se faire peau neuve 
-pour rester compétitif.
-
-Le marché de la prise de rendez-vous évolue et se tourne de plus en plus vers le 
-web et le mobile, j'ai apporté à Eurice les compétences pour la réalisation d'application 
-Mobile sur les plateformes Android et iOS\newline
