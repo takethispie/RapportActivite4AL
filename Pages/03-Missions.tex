@@ -58,19 +58,34 @@ L'architecture du web2 était completement incorrecte, utilisant le C\# comme la
 comme langage objet, aucune des bonnes pratiques ne sont respecté ce qui rend le code hautement dupliqué 
 et difficile à maintenir, de plus aucun test unitaires n'etait mis en place rendant difficile la non-regressions.
 
+La première étape fut d'analyser ce qui appartenait purement à la partie métier et l'isoler des composants 
+techniques relatif à l'application et à la persistance des données: \newline
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{Images/slotmodelold}
+	\caption{classes métier pour l'agenda}
+	\label{fig:domainagenda}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{Images/otherpersistence}
+	\caption{reste des classes métier}
+	\label{fig:otherrepo}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Images/hexarch}
-	\caption{Organigramme Fonctionnel}
-	\label{fig:organigrammefonctionnel}
+	\caption{Architecture Hexagonale}
+	\label{fig:archhexa}
 \end{figure}
 
 
 \newpage
-\section{Bilan et recul sur les missions}
 
+\section{Bilan et recul sur les missions}
 Sur le plan professionnel cette année a été très enrichissante, j'ai pu renforcer mes compétences dans 
 les framework Angular, Ionic et .NET que j'avais commencé à acquérir lors de mon année de licence 
 professionnelle, sur le projet de site web j'ai pu appliquer pleinement mes compétences 
