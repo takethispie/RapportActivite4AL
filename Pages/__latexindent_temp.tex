@@ -16,56 +16,24 @@ Les outils et technologies utilisées pour cette mission sont les suivantes:
       \includegraphics[width=\textwidth]{Images/ajsthtml5}
     \end{minipage}
   \end{figure}
-
+  
 \begin{itemize}
-    \item Ionic + cordova
+    \item TypeScript + cordova + Ionic 3
     \item Git comme outils de versionning de code source
     \item Npm comme gestionnaire de librairie 
     \item Visual Studio Code
-    \item GitLab pour l'hebergement du code source et la gestion de projet \newline
+    \item GitLab pour l'hebergement du code source et la gestion de projet 
 \end{itemize} 
 
 La seconde mission était la refonte totale du site web client qui contient aussi l'API pour 
-l'application mobile, ce nouveau site nommé web3 doit avoir les mêmes fonctionnalitées que 
-la version précédente tout en utilisant la puissance des nouvelles technologies. \newline
-
-\begin{itemize}
-    \item client-side: version Progressive Web App de l'application mobile 
-    \item server-side: Asp.net Core 
-    \item persistance: base de donnée NexusDB
-    \item Git comme outils de versionning de code source 
-    \item GitLab pour l'hebergement du code source et la gestion de projet 
-    \item Visual Studio Code \newline
-\end{itemize}
-
-
+l'application mobile, l'objectif 
 
 \section{Présentation d'une mission à fort enjeux: le site client}
 Le site web client est la facade directement visible de nos clients c'est donc un produit crucial pour
 l'entreprise, il m'a été confié la création du nouveau site web, appelé en interne web3 car il s'agit de la troisième
 refonte du site.
 
-j'ai eu totale liberté pour le choix des technologies utilisés, le web2 est basé sur un stack vieillissant: asp.net webforms et jquery.
-De plus, la qualité du code et sa maintenabilité est extrèmement faible rendant difficile et ce de manière 
-exponentielle, l'ajout de fonctionnalitées et la correction de bugs. 
-
-Pour les choix techniques j'ai choisis de rester sur l'utilisation du langage C\# pour deux raisons, tout d'abord 
-je maitrise ce langage depuis de nombreuses années et ensuite c'est le langage utilisé dans la réalisation de tout les 
-autres logiciels au sein de l'entreprise ce qui assure une certaine homogeneité et enfin cela me permet 
-aussi de reprendre le code de l'ancien site client plus facilement. \newline
-
-L'architecture du web2 était completement incorrecte, utilisant le C\# comme langage purement procédural plutot que 
-comme langage objet, aucune des bonnes pratiques ne sont respecté ce qui rend le code hautement dupliqué 
-et difficile à maintenir, de plus aucun test unitaires n'etait mis en place rendant difficile la non-regressions.
-
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\linewidth]{Images/hexarch}
-	\caption{Organigramme Fonctionnel}
-	\label{fig:organigrammefonctionnel}
-\end{figure}
+j'ai eu totale liberté pour le choix des technologies utilisés, 
 
 
 \newpage
