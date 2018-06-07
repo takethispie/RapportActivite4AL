@@ -25,6 +25,10 @@ Les outils et technologies utilisées pour cette mission sont les suivantes:
     \item GitLab pour l'hebergement du code source et la gestion de projet \newline
 \end{itemize} 
 
+Mon choix c'est porté sur Ionic pour la rapidité avec laquelle on peut développer une application 
+et ce sur les platformes iOS et Android sans avoir à faire du code natif spécifiques 
+aux plateforme de plus j'avais déja des compétence en technologie web.
+
 La seconde mission était la refonte totale du site web client qui contient aussi l'API pour 
 l'application mobile, ce nouveau site nommé web3 doit avoir les mêmes fonctionnalitées que 
 la version précédente tout en utilisant la puissance des nouvelles technologies. \newline
@@ -74,14 +78,14 @@ qui sont eux-mêmes composés de créneaux (slot) qui peuvent avoir plusieurs é
 des sous état tel que le fait qu'un rdv pris soit un rdv web pris via le site web Doctolib 
 ou de l'un de nos autres partenaires. 
 J'ai du trouver et isoler les propriété et différent états des slot par moi pour avoir une 
-architecture correcte, non présente sur le web2.  \newline
+architecture correcte, non présente sur le web2.  \newline \newpage
 
 Avec ces classes réalisées je me suis penché sur l'implémentation du reste de l'architecture, 
 j'ai opté pour une architecture hexagonale, la partie métier serait un noyau central avec 
 lequel le reste de l'application interargirait, cela permettrait ainsi de 
 verifier les règles métier avec des test unitaires et d'isoler ces classes avec le reste 
-de l'application permettant par ailleurs de porter ce noyay rapidement dans 
-d'autres application futures.
+de l'application permettant par ailleurs de porter ce noyau rapidement dans 
+d'autres application futures. \newline
 
 \begin{figure}[!h]
     \centering
@@ -110,7 +114,6 @@ des adapteurs qui retournent des données fixe pour les tests. Dans le cas du we
 partie des interface d'entrée vont être de l'accès aux données tandis que pour les interfaces
 de sortie cela peut être les controller d'ASP.net core ou les requêtes http envoyées 
 par l'application mobile. \newline
-\newpage
 
 \begin{figure}[h]
 	\centering
@@ -126,3 +129,28 @@ et du noyau qui ont chacun leur depot git, le code client-side est dans le depo 
 mais j'ai pour objectif de rendre ce code commun entre l'application mobile et le site web.
 
 \section{Bilan et recul sur les missions}
+Pour les deux missions j'ai eu totale liberté dans mes choix qui fut à la fois un avantage mais 
+aussi une preuve du manque de gestion de projet au sein de l'entreprise, je n'avais 
+aucun cahier des charges et les règles métiers n'etaient pas clairement définies,
+j'ai du donc établir par moi même le cahier des charge et lister les nouvelles fonctionnalitées 
+en me basant sur l'ancien site web et son code qui n'a d'ailleurs pas facilité la tache. \newline
+
+pour l'application j'ai du aussi me baser sur le website et m'auto-former aux bonnes pratiques 
+à appliquer à l'expérience utilisateur et l'interface graphique puisqu'une application
+n'a pas du tout les mêmes contraintes qu'un site web. \newline
+
+En prenant du recul je me suis rendu que le choix du framework Ionic pour l'application mobile
+était un choix judicieux mais seulement à court terme, il est en effet assez difficile de maintenir toute 
+application basé sur le javascript et l'environement node car les outils et la qualité 
+d'un environement de déveleppement basé sur ces techno est assez médiocre, les librairie 
+deviennent incompatibles ou non d'une version sur l'autre, il est assez difficile 
+de débugger certaines erreurs à cause de l'epaisseur conséquente du stack de technologies
+utilisées. Si je n'avais pas eu d'aussi forte contraintes de temp pour produire un résultat 
+j'aurais utilisé le framework Xamarin qui aurait encore plus augmenté la portabilité 
+du code puisque j'aurais pu utiliser le noyau métier du web3 dans l'application
+ce qui aurait permis de réduire le temp de développement et peut être arriver 
+à produire un résultat aussi rapidement qu'avec l'utilisation du framework Ionic, 
+au moment des choix technologique j'ai peut être donc fait preuve d'un manque de vision génerale
+et sur le long terme. \newline
+
+
